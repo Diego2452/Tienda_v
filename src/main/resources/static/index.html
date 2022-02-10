@@ -1,25 +1,107 @@
 <!DOCTYPE html>
+<!--Primera página web del curso...-->
 <html>
     <head>
         <title>Tienda en línea</title>
         <meta charset="UTF-8">
+        <meta name="description" content="Página principal de la tienda">
+        <meta name="keywords" content="TechShop, html5, css3">
+        <link href="css/estilos.css" 
+              rel="stylesheet" 
+              type="text/css"/>
     </head>
     <body>
-        <a href="ejemplo9.html">Back</a>|
-        <a href="index.html">Home</a>|
-        <a href="ejemplo2.html">Next</a><br>
-        <div>
-            <h1 style="text-align: center">Home</h1>
-            <p>Bienvenidos a la página de la Tienda en lídea...</p>
-        </div>
-        
-        <p style="text-align: left">Lorem ipsum dolor sit amet consectetur adipiscing elit platea, consequat quam lacus mi netus morbi praesent, malesuada sodales enim fames vulputate fermentum convallis. Dictumst per mauris ultricies magna magnis faucibus netus torquent enim ultrices, nunc quam hendrerit eleifend curae suspendisse ad tincidunt class, est id primis potenti tempus eget mi fames cubilia. Posuere condimentum nisi ut nibh elementum mattis nam class torquent, nostra litora tellus feugiat habitasse pellentesque arcu felis ante, donec cras auctor lectus porta vehicula ornare morbi. Maecenas sagittis parturient blandit posuere dis ridiculus nibh sociosqu, nam suspendisse scelerisque mattis feugiat ullamcorper primis, vel magnis dui phasellus integer commodo accumsan.</p>
+        <header id="encabezado">
+            <h1>TechShop</h1>
+        </header>
+        <nav id="menu">
+            <a href="ejemplo9.html">Back</a>
+            <a href="index.html">Home</a>
+            <a href="ejemplo2.html">Next</a><br>
+        </nav>
+        <aside id="barralateral">       
+            <h2>Últimas noticias</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit platea, consequat quam lacus mi netus morbi praesent, malesuada sodales enim fames vulputate fermentum convallis. Dictumst per mauris ultricies magna magnis faucibus netus torquent enim ultrices, nunc quam hendrerit eleifend curae suspendisse ad tincidunt class, est id primis potenti tempus eget mi fames cubilia. Posuere condimentum nisi ut nibh elementum mattis nam class torquent, nostra litora tellus feugiat habitasse pellentesque arcu felis ante, donec cras auctor lectus porta vehicula ornare morbi. Maecenas sagittis parturient blandit posuere dis ridiculus nibh sociosqu, nam suspendisse scelerisque mattis feugiat ullamcorper primis, vel magnis dui phasellus integer commodo accumsan.</p>
+        </aside>
+        <section id="contenido">
+            <h1>Nuestros Productos</h1>
+            <article>
+                <header>Portatil XDR5000</header>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit nullam torquent dictum quam, purus arcu mollis in vestibulum massa litora nostra interdum ultricies dui, nascetur nibh nunc praesent viverra sollicitudin class lacinia diam mattis. Aptent euismod neque ligula hendrerit est augue fusce pellentesque, erat nostra per platea velit habitant sapien, dui vulputate ullamcorper semper blandit auctor bibendum. Luctus semper vivamus metus rutrum mi hac, aliquam viverra dapibus aliquet sollicitudin, mollis fames blandit primis nisi.</p>
+                <figure>
+                    <img src="images/equipo1.jpg" alt="Foto de una portatil generica" width="300" height="200"/>
+                    <figcaption>
+                        <p>Lo más vendido</p>
+                    </figcaption>
+                </figure>
+                
+                <footer>Agregar al Carrito</footer>
+            </article>
+            <article>
+                <header>Portatil Alienware 5000</header>
+                <p>Metus suscipit inspirada en la película de culto <cite>Aliens el séptimo pasajero</cite> commodo consequat bibendum eget non tincidunt interdum magna, class pretium accumsan placerat et mus pellentesque neque, aptent tempor inceptos porttitor curabitur condimentum vehicula purus. Etiam taciti magna justo commodo, netus convallis non vel semper, pulvinar nostra nullam. Vestibulum nullam duis mi dui rhoncus leo cursus, nunc velit libero sociis ut facilisi aenean eros, a mus lectus penatibus cum eleifend. Nulla malesuada mattis non pulvinar commodo platea, orci lectus interdum quam faucibus, felis hendrerit mus est blandit.</p>
+                <figure>
+                    <img src="images/equipo2.jpg" alt="Imagen de Portatil Alienware" width="300" height="200"/>
+                    <figcaption>
+                        <p>Diseñada para gamer</p>
+                    </figcaption>
+                </figure>
+                
+                <footer>Agregar al Carrito</footer>
+            </article>
+            <article>
+                <header>Impresora 3D, portable</header>
+                <p>Augue suspendisse torquent et elementum hac ornare vivamus dis, mollis posuere odio tempor libero conubia etiam aptent potenti, aliquam eu tempus sem per nam class. Posuere mattis sociosqu vel laoreet sagittis sapien magnis luctus ornare enim ut, vulputate condimentum vitae euismod iaculis nam fusce tellus nibh. Potenti diam dui auctor suscipit arcu vel ultricies, aenean pulvinar magnis posuere rhoncus convallis ultrices cubilia, praesent dapibus ad suspendisse nec eu.</p>
+                <figure>
+                    <img src="images/equipo3.jpg" alt="Imagen de una impresora 3D" width="300" height="200"/>
+                    <figcaption>
+                        <p>Lo más económico del mercado</p>
+                    </figcaption>
+                </figure>
+                
+                <footer>Agregar al Carrito</footer>
+            </article>
+            <article>
+                <header><h2>Resumen de líneas</h2></header>
+                <table border="0">
+                    <thead>
+                        <tr id="encabezadoTabla">
+                            <th>Código</th>
+                            <th>Detalle</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaDetalle">
+                        <tr>
+                            <td>1</td>
+                            <td>Aliquam turpis elementum taciti phasellus.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Mattis tellus metus aenean, nec netus rutrum.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ridiculus nullam quisque ad lobortis purus.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Litora ante tristique aptent blandit velit ague.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Egestas a aliquet rhoncus justo lobortis hac.</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Eget arcu parturient aliquam hendrerit riduculus.</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        <p style="text-align: right">Sociosqu cras montes sem aenean tincidunt fames, curae semper dignissim lacinia fringilla hendrerit laoreet, aliquam scelerisque praesent ornare rutrum. Taciti ac inceptos mauris quisque imperdiet gravida maecenas vitae ullamcorper, vel viverra turpis arcu suscipit ante placerat vestibulum, montes eleifend vivamus sodales libero scelerisque curae laoreet. Tempus sapien imperdiet inceptos tempor in nascetur eleifend dictumst vitae a condimentum, curabitur turpis nam consequat vehicula nisl felis molestie facilisis phasellus aliquam, mi eget placerat hendrerit tincidunt ante proin vulputate sed purus.</p>
-
-        <p style="text-align: center">Tempor vel erat turpis mattis aliquam lectus sociis, dis ultricies suscipit dictumst dictum eu pellentesque, in rhoncus mauris ornare interdum porttitor. Platea purus aliquam nunc rhoncus fusce laoreet nostra eu ornare lacus, penatibus aptent turpis a urna congue taciti faucibus facilisis mauris, feugiat suscipit class nam nascetur non habitant inceptos cursus. Ad sodales egestas purus tempor dictum sem curabitur rutrum ultrices tortor, venenatis nibh interdum lectus taciti viverra donec semper elementum, faucibus tristique aptent nam natoque felis maecenas varius pretium.</p>
-        <br>
-        <br>
-        <p>Última línea</p>
+            </article>
+        </section>       
+        <footer id="piepagina">
+            Derechos Reservados &COPY; 2022, Telefono <address style="display: inline">8899-7766</address>
+        </footer>
     </body>
 </html>
