@@ -1,6 +1,8 @@
 package com.tienda.service;
 
+import com.tienda.dao.CategoriaDao;
 import com.tienda.dao.ClienteDao;
+import com.tienda.model.Categoria;
 import com.tienda.model.Cliente;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     @Transactional
     public void save (Cliente cliente) {
+        Cliente cliente = cliente.getCliente();
+        cliente = clienteDao.save(cliente);
+        cliente.setCliente(cliente);
         clienteDao.save(cliente);
     }
         
