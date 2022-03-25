@@ -3,48 +3,48 @@
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TechShop</title>
-        <meta charset="UTF-8">
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
     <body>
-        <header th:replace="plantilla/plantilla :: header" />
+        <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
-            <h2>Nuestros Artículos</h2>
+            <h2 th:text="#{articulo.titulo}">Listado de Clientes</h2>
+            <a th:href="@{/articulo/nuevo}" th:text="#{articulo.nuevo}">Nuevo Articulo</a>
             <div th:if="$(articulos != null and !articulos.empty)">
             <table border="1">
-                <thead>
+                <thead> <tr>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Limite</th>
-                        <th>Eliminar</th>
-                        <th>Modificar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="cliente : ${clientes}">
-                        <td th:text="${cliente.nombre}"></td>
-                        <td th:text="${cliente.apellidos}"></td>
-                        <td th:text="${cliente.correo}"></td>
-                        <td th:text="${cliente.teléfono}"></td>
-                        <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Eliminar</a></td>
-                        <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Modificar</a></td>
-
-                    </tr>
-                </tbody>
+                    <th th:text="#{articulo.descripcion}">Descripcion</th>
+                    <th th:text="#{articulo.precio}">Precio</th>
+                    <th th:text="#{articulo.existencias}">Existencias</th>
+                    <th th:text="#{articulo.activo}">Activa</th>
+                    <th th:text="#{accion.eliminar}">Eli</th>
+                    <th th:text="#{articulo.actualizar}">Actu</th>
+                    </tr> </thead>
+                <tbody> <tr th:each="articulo: ${articulos}">
+                        <td th:text="${articulo.descripcion}"></td>
+                        <td th:text="${#numbers.formatDecimal(articulo.precio,3,2)}"
+                            style="text-align: right"></td>
+                        <td th:text="${#numbers.formatDecimal(articulo.precio,3,2)}"
+                            style="text-align: center"></td>
+                            <td><input type="checkbox" name="activa" th:checked="${articulo.activo}" disabled="true"></td>
+                        <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}"
+                               th:text="#{accion.eliminar}">Eliminar</a></td>
+                        <td><a th:href="@{/articulo/actualizar/} + ${articulo.idArticulo}"
+                               th:text="#{accion.actualizar}">Modificar</a></td>
+                    </tr> </tbody>
             </table>
         </div>
-        <div th>
-            
+        <div th:if="@{articulos == null or articulos.empty}">
+            <p th:text="@{articulo.no_mostrar}">No tenemos articulos que mostrar...</p>
         </div>
-    </body>
+    </div>
+    <footer th:replace="layout/plantilla :: footer"/>
 </html>
 
 <!-- comment 
-            <p>Nombre: <span th:text="${cliente.nombre}"></p>
-            <p>Apellidos: <span th:text="${cliente.apellidos}"/></p>
-            <p>Correo: <span th:text="${cliente.correo}"/></p>
-            <p>Telefono: <span th:text="${cliente.telefono}"/></p>
+            <p>Nombre: <span th:text="${articulo.nombre}"></p>
+            <p>Apellidos: <span th:text="${articulo.apellidos}"/></p>
+            <p>Correo: <span th:text="${articulo.correo}"/></p>
+            <p>Telefono: <span th:text="${articulo.telefono}"/></p>
             -->

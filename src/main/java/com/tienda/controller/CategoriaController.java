@@ -18,7 +18,15 @@ public class CategoriaController {
     
     @Autowired
     private CategoriaService categoriaService;
+    private Object articuloService;
     
+    @GetMapping("/articulo/listado")
+    public String inicio(Model model){
+        var articulos = articuloService.getArticulos(true);
+        model.addAttribute("articulos", articulos);
+        return "/articulo/listado";
+    }
+        
     @GetMapping("/categoria/nuevo")
     public String nuevoCategoria(Categoria categoria) {    
         return "/categoria/modificar";     

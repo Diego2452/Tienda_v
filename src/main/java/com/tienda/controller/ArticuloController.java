@@ -19,6 +19,13 @@ public class ArticuloController {
     @Autowired
     private ArticuloService articuloService;
     
+    @GetMapping("/articulo/listado")
+    public String inicio(Model model){
+        var articulos = articuloService.getArticulos(true);
+        model.addAttribute("articulos", articulos);
+        return "/articulo/listado";
+    }
+        
     @GetMapping("/articulo/nuevo")
     public String nuevoArticulo(Articulo articulo) {    
         return "/articulo/modificar";     

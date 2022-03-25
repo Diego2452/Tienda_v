@@ -20,9 +20,9 @@ public class IndexController {
     private ArticuloService articuloService;
     
     @GetMapping("/")
-    public String inicio(Model model) {
-        var articulo = articuloService.getArticulo();
-        model.addAttribute("articulo", articulo);
+    public String inicio(Model model){
+        var articulos = articuloService.getArticulos(true);
+        model.addAttribute("articulos", articulos);
         return "index";
     }
 } 

@@ -3,43 +3,40 @@
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TechShop</title>
-        <meta charset="UTF-8">
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
     <body>
-        <header th:replace="plantilla/plantilla :: header" />
+        <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
-            <h2>Nuestros Artículos</h2>
-            <div th:if="$(articulos != null and !articulos.empty)">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Limite</th>
-                        <th>Eliminar</th>
-                        <th>Modificar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="cliente : ${clientes}">
-                        <td th:text="${cliente.nombre}"></td>
-                        <td th:text="${cliente.apellidos}"></td>
-                        <td th:text="${cliente.correo}"></td>
-                        <td th:text="${cliente.teléfono}"></td>
-                        <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Eliminar</a></td>
-                        <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Modificar</a></td>
-
-                    </tr>
-                </tbody>
-            </table>
+            <h2 th:text="#{categoria.titulo}">Listado de Clientes</h2>
+            <a th:href="@{/categoria/nuevo}" th:text="#{categoria.nuevo}">Nueva Categoria</a>
+            <div th:if="$(categorias != null and !categorias.empty)">
+                <table border="1">
+                    <thead> <tr>
+                            <tr>
+                                <th th:text="#{categoria.descripcion}">Descripcion</th>
+                                <th th:text="#{categoria.activo}">Activa</th>
+                                <th th:text="#{accion.eliminar}">Eliminar</th>
+                                <th th:text="#{categoria.actualizar}">Actualizar</th>
+                            </tr> 
+                    </thead>
+                    <tbody> 
+                        <tr th:each="categoria: ${categorias}">
+                            <td th:text="${categoria.descripcion}"></td>
+                            <td><input type="checkbox" name="activa" th:checked="${categoria.activo}" disabled="true"></td>
+                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}"
+                                   th:text="#{accion.eliminar}">Eliminar</a></td>
+                            <td><a th:href="@{/categoria/actualizar/} + ${categoria.idCategoria}"
+                                   th:text="#{accion.actualizar}">Modificar</a></td>
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="@{categorias == null or categorias.empty}">
+                <p th:text="@{categoria.no_mostrar}">No tenemos categorias que mostrar...</p>
+            </div>
         </div>
-        <div th>
-            
-        </div>
-    </body>
+        <footer th:replace="layout/plantilla :: footer"/>
 </html>
 
 <!-- comment 
