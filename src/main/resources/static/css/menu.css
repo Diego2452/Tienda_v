@@ -54,6 +54,7 @@ body {
 }
 
 .nav-menu-link:hover {
+    font-size: 22px;
     background-color: #024070;
     transition: 0.5s;
 }

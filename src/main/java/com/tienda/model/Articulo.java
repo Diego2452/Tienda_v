@@ -13,7 +13,6 @@ import lombok.Data;
 @Entity
 @Table(name="categoria")
 public class Articulo implements Serializable {
-    
     private static final long serialVersionUID = 1L;
     
     @Id

@@ -18,9 +18,9 @@ public class ArticuloServiceImpl implements ArticuloService{
     
     @Override
     @Transactional(readOnly = true)
-    public List<Articulo> getArticulos(boolean activo) {
+    public List<Articulo> getArticulos(boolean activos) {
         var lista = (List<Articulo>) articuloDao.findAll();
-        if (activo) {
+        if (activos) {
             // Se remueve de la lista las articulos que estan no activo
             lista.removeIf( e -> !e.isActivo());
         }

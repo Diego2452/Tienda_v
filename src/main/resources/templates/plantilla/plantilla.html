@@ -1,35 +1,50 @@
 <!DOCTYPE html>
-
-<html  xmlns:th="http://www.thymeleaf.org"
-       xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <header th:fragment="header">
+        <header th:fragment="header" class="header">
             <nav class="nav">
                 <a th:href="@{/}" class="logo nav-link">TechShop</a>
-                <ul class="nav-menu">
+                <ul class="nav-menu" sec:authorize="hasRole('ROLE_VENDEDOR')">
                     <li class="nav-menu-item">
                         <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link"
-                           th:text="#{plantilla.clientes}">Clientes</a>
+                           th:text="#{plantilla.clientes}">Clientes_n</a>
                     </li>
                     <li class="nav-menu-item">
                         <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link"
-                           th:text="#{plantilla.categorias}">Categoria</a>
+                           th:text="#{plantilla.categorias}">Categoria_n</a>
                     </li>
                     <li class="nav-menu-item">
                         <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link"
-                           th:text="#{plantilla.articulos}">Articulo</a>
+                           th:text="#{plantilla.articulos}">Articulo_n</a>
+                    </li>
+                    <li class="nav-menu-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/usuario/listado}" class="nav-menu-link nav-link"
+                           th:text="#{plantilla.articulos}">Usuarios_n</a>
                     </li>
                 </ul>
             </nav>
         </header>
+        
         <footer th:fragment="footer" class="footer">
-            <p>&COPY [[#{plantilla.derechos}]]
+            <div>&COPY [[#{plantilla.derechos}]]
                 <a th:href="@{/(lang=es}}">ES</a> |
-                <a th:href="@{/lang=en)}">EN</a></p>
+                <a th:href="@{/(lang=en)}">EN</a> |
+                <a th:href="@{/(lang=fr)}">FR</a> |
+                [[#{plantilla.tusuario}]]: <span sec:authentication="name">xx</span> |
+                [[#{plantilla.troles}]]: <span sec:authentication="principal.authorities">s</span>
+                <form method="POST"
+                      th:action="@{/logout}"
+                      style="display: inline">
+                    <a href="#" 
+                       onclick="this.parentNode.submit();">[[#{plantilla.logout}]]</a>
+                </form>
+            </div>
         </footer>
     </body>
 </html>

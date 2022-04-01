@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<HTML xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
@@ -29,9 +30,10 @@
                         <td th:text="${cliente.apellidos}"></td>
                         <td th:text="${cliente.correo}"></td>
                         <td th:text="${cliente.teléfono}"></td>
+                        <td th:text="${#numbers.formatDecimal(cliente.credito.limite,3,2)}" style="
+                            text-align: right"></td>
                         <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Eliminar</a></td>
                         <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Modificar</a></td>
-
                     </tr>
                 </tbody>
             </table>

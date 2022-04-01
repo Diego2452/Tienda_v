@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<HTML xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
     <head>
         <title>TechShop</title>
+        <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
     <body>
         <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
-            <h2 th:text="#{articulo.titulo}">Listado de Clientes</h2>
-            <a th:href="@{/articulo/nuevo}" th:text="#{articulo.nuevo}">Nuevo Articulo</a>
+            <h2 th:text="#{articulo.titulo}">Listado de Articulos</h2>
+            <a th:href="@{/articulo/nuevo}" 
+               sec:authorize="hasRole('ROLE_ADMIN')"
+               th:text="#{articulo.nuevo}">Nuevo Articulo</a>
             <div th:if="$(articulos != null and !articulos.empty)">
             <table border="1">
                 <thead> <tr>
