@@ -2,7 +2,7 @@ package com.tienda.controller;
 
 import com.tienda.dao.ClienteDao;
 import com.tienda.model.Cliente;
-import com.tienda.service.ClienteService;
+import com.tienda.services.ClienteService;
 import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

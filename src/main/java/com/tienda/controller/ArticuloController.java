@@ -3,8 +3,8 @@ package com.tienda.controller;
 
 import com.tienda.dao.ArticuloDao;
 import com.tienda.model.Articulo;
-import com.tienda.service.ArticuloService;
-import com.tienda.service.CategoriaService;
+import com.tienda.services.ArticuloService;
+import com.tienda.services.CategoriaService;
 import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

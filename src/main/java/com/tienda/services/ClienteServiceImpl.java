@@ -1,4 +1,4 @@
-package com.tienda.service;
+package com.tienda.services;
 
 import com.tienda.dao.CreditoDao;
 import com.tienda.dao.ClienteDao;

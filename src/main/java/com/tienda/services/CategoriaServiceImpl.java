@@ -1,4 +1,4 @@
-package com.tienda.service;
+package com.tienda.services;
 
 import com.tienda.dao.CategoriaDao;
 import com.tienda.model.Categoria;
