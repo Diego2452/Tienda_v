@@ -2,44 +2,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org" 
       xmlns:sec="http://thymeleaft.org/extras/spring-security">
-    <head>
+    <head th:fragment="plantilla/plantilla :: head">
         <title>TechShop</title>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
-    <body>  
-        <header th:replace="layout/plantilla :: header"/>
+    <body>
+        <header th:replace="plantilla/plantilla :: header"/>
         <div class="contenido">
-            <h2 th:text="${articulo.datos}">Datos de Clientes</h2>
-            <a th:href="@{/articulo/listado}" th:text="${accion.regresar}">Regresar</a>
-            <br><br/>
+            <h2 th:text="#{articulo.datos}">Datos del cliente</h2>
+            <a th:href="@{/articulo/listado}" th:text="#{accion.regresar}">Regresar</a>
             <form th:action="@{/articulo/guardar}" method="post" th:object="${articulo}">
-                <input type="hidden" name="idArticulo" th:field="{idArticulo}"/><br/>
-
-                <label form="categoria" th:text="#{articulo.categoria}">Categoria:</label>
+                
+                <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                
+                <label for="categoria" th:text="#{articulo.categoria}">Categoria: </label>
                 <select th:field="*{idCategoria}">
                     <option th:each="categoria: ${categorias}"
                             th:value="${categoria.idCategoria}"
                             th:text="${categoria.descripcion}"/>
                 </select><br/>
-
-                <label form="descripcion" th:text="#{articulo.descripcion}">Descripcion:</label>
-                <input type="text" name="descripcion" th:field="*{descripcion}"/><br/>
-
-                <label form="detalle" th:text="#{articulo.detalle}">Detalle</label>
-                <textarea name="detalle" th:field="*{detalle}" rows="6" cols="50"/><br/>
-
-                <label form="precio" th:text="#{articulo.precio}">Precio</label>
-                <input type="number" name="precio" th:field="*{precio}"/><br/>
-
-                <label form="existencias" th:text="#{articulo.existencias}">Existencias</label>
-                <input type="number" name="existencias" th:field="*{existencias}"/><br/>
-
-                    <label form="activo" th:text="#{articulo.activo}">Activo</label>
-                <input type="checkbox" name="activo" th:field="*{activo}"/><br/><br/>
-
+                
+                <label for="descripcion" th:text="${articulo.descripcion}">Descripcion: </label>
+                <input type="text" name="descripcion" th:field="*{descripcion}"/>
+                <br/>
+                
+                <label for="detalle" th:text="#{articulo.detalle}">Detalle: </label>
+                <textarea name="detalle" th:field="*{detalle}" rows="6" cols="50"/>
+                <br/>
+                
+                <label for="precio" th:text="#{articulo.precio}">Precio: </label>
+                <input type="number" name="precio" th:field="*{precio}"/>
+                <br/>
+                
+                <label for="existencias" th:text="#{articulo.existencias}">Existencias: </label>
+                <input type="number" name="existencias" th:field="*{existencias}"/>
+                <br/>
+                
+                <label for="activo" th:text="#{articulo.activo}">Activo: </label>
+                <input type="checkbox" name="activo" th:field="*{activo}"/>
+                <br/>
+                <br/>
+                
                 <button type="submit" name="guardar" th:text="#{accion.guardar}"/>
             </form>
         </div>
-        <footer th:replace="layout/plantilla :: footer" />
+        <footer th:replace="plantilla/plantilla :: footer"/>
     </body>
 </html>

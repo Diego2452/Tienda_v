@@ -2,48 +2,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org" 
       xmlns:sec="http://thymeleaft.org/extras/spring-security">
-    <head>
+    <head th:fragment="plantilla/plantilla :: head">
         <title>TechShop</title>
-        <meta charset="UTF-8">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header" />
-        <div class="contenido">
-            <h2 th:text="#{categoria.titulo}">Listado de Clientes</h2>
-            <a th:href="@{/categoria/nuevo}" th:text="#{categoria.nuevo}">Nueva Categoria</a>
-            <div th:if="$(categorias != null and !categorias.empty)">
-                <table border="1">
-                    <thead> <tr>
-                            <tr>
-                                <th th:text="#{categoria.descripcion}">Descripcion</th>
-                                <th th:text="#{categoria.activo}">Activa</th>
-                                <th th:text="#{accion.eliminar}">Eliminar</th>
-                                <th th:text="#{categoria.actualizar}">Actualizar</th>
-                            </tr> 
-                    </thead>
-                    <tbody> 
-                        <tr th:each="categoria: ${categorias}">
-                            <td th:text="${categoria.descripcion}"></td>
-                            <td><input type="checkbox" name="activa" th:checked="${categoria.activo}" disabled="true"></td>
-                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}"
-                                   th:text="#{accion.eliminar}">Eliminar</a></td>
-                            <td><a th:href="@{/categoria/actualizar/} + ${categoria.idCategoria}"
-                                   th:text="#{accion.actualizar}">Modificar</a></td>
-                        </tr> 
-                    </tbody>
-                </table>
-            </div>
-            <div th:if="@{categorias == null or categorias.empty}">
-                <p th:text="@{categoria.no_mostrar}">No tenemos categorias que mostrar...</p>
-            </div>
+        <header th:replace="plantilla/plantilla :: header"/>
+        
+        <div class="contenido">    
+        <h2 th:text="#{categoria.titulo}">Gestión de categorias</h2>
+        
+        <a th:href="@{/categoria/nuevo}" 
+           sec:authorize="hasRole('ROLE_ADMIN')"
+           th:text="#{categoria.nuevo}">Nueva categoria</a>
+        <di th:if="${categorias != null and !categorias.empty}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th th:text="#{categoria.descripcion}">Descripcion</th>
+                    <th th:text="#{categoria.activo}">Activa</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{accion.eliminar}">Eliminar</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{accion.actualizar}">Actualizar</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categoria : ${categorias}">
+                    <td th:text="${categoria.descripcion}"></td>
+                    <td><input type="checkbox" name="activa" th:checked="${categoria.activo}" disabled="true"></td>
+                    <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}" th:text="#{accion.eliminar}">Eliminar</a></td>
+                    <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}" th:text="#{accion.actualizar}">Modificar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${categorias == null or categorias.empty}">
+            <p th:text="#{categoria.no_mostrar}">No tenemos categorias que mostrar...</p>
         </div>
-        <footer th:replace="layout/plantilla :: footer"/>
+        </div>
+        <footer th:replace="plantilla/plantilla :: footer"/>
+    </body>
 </html>
-
-<!-- comment 
-            <p>Nombre: <span th:text="${cliente.nombre}"></p>
-            <p>Apellidos: <span th:text="${cliente.apellidos}"/></p>
-            <p>Correo: <span th:text="${cliente.correo}"/></p>
-            <p>Telefono: <span th:text="${cliente.telefono}"/></p>
-            -->

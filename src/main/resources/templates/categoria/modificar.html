@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org" 
-      xmlns:sec="http://thymeleaft.org/extras/spring-security">    <head>
-        <title>TechShop</title> <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:fragment="plantilla/plantilla :: head">
+        <title>TechShop</title>
     </head>
-    <body>  
-        <header> th:replace="layout/plantilla :: header"/>
+    <body>
+        <header th:replace="plantilla/plantilla :: header"/>
         <div class="contenido">
-            <h2 th:text="#{categoria.datos}">Datos de Cliente</h2>
+            <h2 th:text="#{categoria.datos}">Datos del categoria</h2>
             <a th:href="@{/categoria/listado}" th:text="#{accion.regresar}">Regresar</a>
-            <br/><br/>
-            <form th:action="@{/categoria/}"
-                    method="post"
-                    th:object="${categoria}">
+            <form th:action="@{/categoria/guardar}" method="post" th:object="${categoria}">
+                
                 <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
                 
-                <label for="descripcion" th:text="#{categoria.descripcion}">Descripcion:</label>
+                <label for="descripcion" th:text="#{categoria.descripcion}">Descripcion: </label>
                 <input type="text" name="descripcion" th:field="*{descripcion}"/>
                 <br/>
                 
-                <label for="activo" th:text="#{categoria.activo}">Descripcion:</label>
+                <label for="activo" th:text="#{categoria.activo}">Activo: </label>
                 <input type="checkbox" name="activo" th:field="*{activo}"/>
+ 
                 <br/>
-                <br/>    
+                <br/>
                 
                 <button type="submit" name="guardar" th:text="#{accion.guardar}"/>
-                </form>
-            </div>
-            <footer th:replace="plantilla/plantilla :: footer" />
+            </form>
+        </div>
+        <footer th:replace="plantilla/plantilla :: footer"/>
     </body>
 </html>

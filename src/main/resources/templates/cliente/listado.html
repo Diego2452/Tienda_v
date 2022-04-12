@@ -2,45 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org" 
       xmlns:sec="http://thymeleaft.org/extras/spring-security">
-    <head>
+    <head th:replace="plantilla/plantilla :: head">
         <title>TechShop</title>
-        <meta charset="UTF-8">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
     <body>
         <header th:replace="plantilla/plantilla :: header" />
-        <div class="contenido">
-            <h2>Nuestros Artículos</h2>
-            <div th:if="$(articulos != null and !articulos.empty)">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Limite</th>
-                        <th>Eliminar</th>
-                        <th>Modificar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="cliente : ${clientes}">
-                        <td th:text="${cliente.nombre}"></td>
-                        <td th:text="${cliente.apellidos}"></td>
-                        <td th:text="${cliente.correo}"></td>
-                        <td th:text="${cliente.teléfono}"></td>
-                        <td th:text="${#numbers.formatDecimal(cliente.credito.limite,3,2)}" style="
-                            text-align: right"></td>
-                        <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Eliminar</a></td>
-                        <td><a th:href="@{/carrito/agregar/}+${articulo.idArticulo}">Modificar</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div th>
-            
-        </div>
+        
+        <section th:replace="cliente/fragmentosCliente :: botonesAgregar"/>
+        <section th:replace="cliente/fragmentosCliente :: listadoCliente"/>
+        
+        
+        <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>
 

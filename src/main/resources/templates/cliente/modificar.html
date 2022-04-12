@@ -1,40 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org" 
       xmlns:sec="http://thymeleaft.org/extras/spring-security">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
-        <meta charset="UTF-8">
-            <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
-
-    <body>  
-        <div>
-            <header th:replace="plantilla/plantilla :: header" />
-            <div class="contenido">
-                <h2>Datos de Cliente</h2>
-                <a th:href="@{/}">Regresar</a>
-                <form method="post"
-                      th:action="@{/guardarEstado}"
-                      th:object="${estado}">
-                    <label for="id">ID: </label>
-                    <input type="text" name="Id_estado" th:field="*{Id_estado}"/>
-                    <br/>
-                    <label for="nombre">Nombre: </label>
-                    <input type="text" name="nombre" th:field="*{nombre}"/>
-                    <br/>
-                    <label for="correo">Correo: </label>
-                    <input type="text" name="correo" th:field="*{correo}"/>
-                    <br/>
-                    <label for="telefono">Telefono: </label>
-                    <input type="number" name="telefono" th:field="*{telefono}"/>
-                    <br/>
-                    <label for="limite">Limite: </label>
-                    <input type="text" name="limite" th:field="*{limite}"/>
-                    <br/>
-                    <input type="submit" name="guardar" value="Guardar"/>
-                </form>
-            </div>
-            <footer th:replace="plantilla/plantilla :: footer" />
+    <body>
+        <header th:replace="plantilla/plantilla :: header" />
+        
+        <section th:replace="cliente/fragmentosCliente :: editarCliente"/> 
+        
+        <footer th:replace="plantilla/plantilla :: footer" />
     </body>
 </html>
